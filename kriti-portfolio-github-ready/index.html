@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kriti Arora — AI-Powered Front-End Technical Architect</title>
+<meta name="description" content="Kriti Arora — AI-Powered Front-End Technical Architect. React architecture, enterprise AI integration, techno-managerial leadership.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5F7FA;
+    --panel:#EBEFF5;
+    --ink:#14213D;
+    --ink-soft:#54607A;
+    --accent:#2E5395;
+    --accent-deep:#14213D;
+    --warm:#C97A2B;
+    --line:#C7D0DE;
+    --line-soft:#DCE2EC;
+    --max:920px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', system-ui, sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+
+  /* background blueprint grid, subtle */
+  .grid-field{
+    background-image:
+      linear-gradient(var(--line-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+    background-size: 34px 34px;
+    background-position: -1px -1px;
+  }
+
+  header{
+    position:sticky; top:0; z-index:20;
+    background:rgba(245,247,250,0.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+    max-width:var(--max); margin:0 auto;
+  }
+  .wordmark{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.05rem;
+    letter-spacing:0.01em;
+    color:var(--ink);
+    text-decoration:none;
+  }
+  nav ul{
+    list-style:none; display:flex; gap:26px; margin:0; padding:0;
+    flex-wrap:wrap;
+  }
+  nav a{
+    color:var(--ink-soft); text-decoration:none; font-size:0.92rem; font-weight:500;
+    border-bottom:1px solid transparent;
+    padding-bottom:2px;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  nav a:hover{ color:var(--accent); border-color:var(--accent); }
+  .btn{
+    display:inline-block;
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:600;
+    font-size:0.9rem;
+    color:#fff;
+    background:var(--accent-deep);
+    padding:10px 18px;
+    border-radius:2px;
+    text-decoration:none;
+    border:1px solid var(--accent-deep);
+  }
+  .btn:hover{ background:var(--accent); border-color:var(--accent); }
+  .btn-outline{
+    background:transparent; color:var(--accent-deep); border:1px solid var(--ink);
+  }
+  .btn-outline:hover{ background:var(--ink); color:#fff; }
+
+  /* HERO */
+  .hero{
+    padding:64px 0 40px;
+    border-bottom:1px solid var(--line);
+  }
+  .tag-box{
+    display:inline-flex; align-items:center; gap:8px;
+    border:1px solid var(--line); background:var(--panel);
+    padding:5px 10px; border-radius:2px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem; font-weight:600; letter-spacing:0.03em;
+    color:var(--ink-soft);
+  }
+  .tag-box .dot{ width:6px; height:6px; border-radius:50%; background:var(--warm); display:inline-block;}
+
+  h1.name{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(2.6rem, 6vw, 4rem);
+    line-height:1.02;
+    margin:18px 0 6px;
+    color:var(--ink);
+  }
+  .role-line{
+    font-size:clamp(1.05rem, 2.4vw, 1.3rem);
+    color:var(--accent);
+    font-weight:600;
+    margin:0 0 22px;
+  }
+  .lede{
+    max-width:640px;
+    font-size:1.05rem;
+    color:var(--ink-soft);
+    margin:0 0 30px;
+  }
+  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:44px;}
+
+  .stats-strip{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    border-top:1px solid var(--line);
+    border-left:1px solid var(--line);
+  }
+  .stat{
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:16px 18px;
+  }
+  .stat .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    font-size:1.5rem;
+    color:var(--warm);
+    display:block;
+  }
+  .stat .label{
+    font-size:0.8rem;
+    color:var(--ink-soft);
+  }
+
+  /* schematic diagram */
+  .diagram{ margin:44px 0 8px; }
+  .diagram svg{ width:100%; height:auto; display:block; }
+  .diagram-caption{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--ink-soft);
+    letter-spacing:0.02em;
+    margin-top:10px;
+  }
+
+  .diag-line{
+    fill:none; stroke:var(--accent); stroke-width:2;
+    stroke-dasharray:220; stroke-dashoffset:220;
+    animation:draw 1.4s ease forwards;
+  }
+  .diag-line.d2{ animation-delay:.35s; }
+  .diag-node circle{ fill:var(--bg); stroke:var(--ink); stroke-width:2; }
+  .diag-node text{
+    font-family:'IBM Plex Sans', sans-serif; font-size:13px; font-weight:600; fill:var(--ink);
+  }
+  .diag-node.n1 circle{ stroke:var(--accent); }
+  .diag-node.n3 circle{ stroke:var(--warm); }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  @media (prefers-reduced-motion: reduce){
+    .diag-line{ animation:none; stroke-dashoffset:0; }
+  }
+
+  .hero-top{ display:flex; gap:36px; align-items:flex-start; flex-wrap:wrap; }
+  .hero-text{ flex:1 1 460px; min-width:280px; }
+  .headshot-wrap{
+    flex:0 0 auto;
+    width:148px; height:148px;
+    border:1px solid var(--ink);
+    position:relative;
+    background:var(--panel);
+  }
+  .headshot-wrap::before{
+    content:"";
+    position:absolute; top:-1px; left:-1px; width:14px; height:14px;
+    border-top:2px solid var(--warm); border-left:2px solid var(--warm);
+  }
+  .headshot-wrap::after{
+    content:"";
+    position:absolute; bottom:-1px; right:-1px; width:14px; height:14px;
+    border-bottom:2px solid var(--warm); border-right:2px solid var(--warm);
+  }
+  .headshot-wrap img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  .headshot-fallback{
+    width:100%; height:100%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-weight:600; font-size:2.6rem;
+    color:var(--accent); background:var(--panel);
+  }
+  @media (max-width:680px){
+    .hero-top{ flex-direction:column-reverse; }
+    .headshot-wrap{ width:100px; height:100px; }
+  }
+
+  section{ padding:56px 0; border-bottom:1px solid var(--line); }
+
+  section:last-of-type{ border-bottom:none; }
+
+  .section-head{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:30px; flex-wrap:wrap; gap:10px;}
+  h2.section-title{
+    font-family:'Fraunces', serif; font-weight:600;
+    font-size:1.7rem; margin:0; color:var(--ink);
+  }
+  .section-note{ font-size:0.88rem; color:var(--ink-soft); }
+
+  /* case studies */
+  .case{
+    border:1px solid var(--line);
+    background:var(--panel);
+    margin-bottom:20px;
+    padding:26px 28px;
+    position:relative;
+  }
+  .case::before{
+    content:"";
+    position:absolute; top:-1px; left:-1px;
+    width:14px; height:14px;
+    border-top:2px solid var(--ink);
+    border-left:2px solid var(--ink);
+  }
+  .case::after{
+    content:"";
+    position:absolute; bottom:-1px; right:-1px;
+    width:14px; height:14px;
+    border-bottom:2px solid var(--ink);
+    border-right:2px solid var(--ink);
+  }
+  .case-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem; font-weight:600; letter-spacing:0.04em;
+    color:var(--accent);
+    border:1px solid var(--accent);
+    display:inline-block;
+    padding:3px 8px;
+    margin-bottom:12px;
+  }
+  .case h3{
+    font-family:'Fraunces', serif; font-weight:500;
+    font-size:1.28rem; margin:0 0 12px; color:var(--ink);
+  }
+  .case-metrics{
+    display:flex; gap:26px; flex-wrap:wrap; margin-bottom:14px;
+  }
+  .case-metrics .m{
+    font-family:'IBM Plex Mono', monospace; font-weight:600; color:var(--warm); font-size:0.95rem;
+  }
+  .case-metrics .m span{
+    display:block; font-family:'IBM Plex Sans', sans-serif; font-weight:400; color:var(--ink-soft); font-size:0.76rem; margin-top:2px;
+  }
+  .case p{ margin:0 0 12px; color:var(--ink-soft); max-width:74ch; }
+  .case-stack{ font-size:0.82rem; color:var(--ink-soft); }
+  .case-stack b{ color:var(--ink); font-weight:600; }
+
+  /* also shipped */
+  .also-list{
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:16px 28px;
+  }
+  .also-item{ border-left:2px solid var(--line); padding-left:14px; }
+  .also-item h4{ margin:0 0 4px; font-size:0.98rem; font-weight:600; }
+  .also-item p{ margin:0; color:var(--ink-soft); font-size:0.88rem; }
+
+  /* experience */
+  .job{ margin-bottom:30px; }
+  .job-head{ display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:6px; margin-bottom:8px;}
+  .job-title{ font-weight:600; font-size:1.05rem; }
+  .job-org{ color:var(--accent); font-weight:600; }
+  .job-dates{ font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--ink-soft); }
+  .job ul{ margin:0; padding-left:18px; color:var(--ink-soft); }
+  .job li{ margin-bottom:6px; }
+
+  /* skills */
+  .skills-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:22px 32px; }
+  .skill-group h4{
+    margin:0 0 8px; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.05em;
+    color:var(--warm); font-weight:600;
+  }
+  .skill-group p{ margin:0; color:var(--ink-soft); font-size:0.92rem; }
+
+  /* recognition */
+  .recog-list{ list-style:none; padding:0; margin:0; }
+  .recog-list li{
+    padding:10px 0; border-bottom:1px solid var(--line-soft);
+    display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+    color:var(--ink-soft); font-size:0.92rem;
+  }
+  .recog-list li b{ color:var(--ink); font-weight:600; }
+
+  footer{ padding:50px 0 60px; }
+  .footer-inner{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; }
+  .footer-col h4{ font-size:0.78rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft); margin:0 0 10px; font-weight:600;}
+  .footer-col a, .footer-col p{ display:block; color:var(--ink); text-decoration:none; margin-bottom:6px; font-size:0.95rem;}
+  .footer-col a:hover{ color:var(--accent); }
+  .copyright{ margin-top:40px; font-size:0.8rem; color:var(--ink-soft); }
+
+  /* chat widget */
+  #chat-toggle{
+    position:fixed; bottom:22px; right:22px; z-index:50;
+    background:var(--accent-deep); color:#fff;
+    border:1px solid var(--accent-deep);
+    font-family:'IBM Plex Sans', sans-serif; font-weight:600; font-size:0.9rem;
+    padding:12px 18px; border-radius:2px; cursor:pointer;
+    display:flex; align-items:center; gap:8px;
+    box-shadow:0 4px 14px rgba(20,33,61,0.25);
+  }
+  #chat-toggle:hover{ background:var(--accent); }
+  #chat-toggle .pulse{ width:7px; height:7px; border-radius:50%; background:var(--warm); }
+
+  #chat-panel{
+    position:fixed; bottom:22px; right:22px; z-index:60;
+    width:340px; max-width:calc(100vw - 32px);
+    height:460px; max-height:calc(100vh - 100px);
+    background:var(--bg);
+    border:1px solid var(--ink);
+    display:none;
+    flex-direction:column;
+    box-shadow:0 12px 32px rgba(20,33,61,0.28);
+  }
+  #chat-panel.open{ display:flex; }
+  .chat-head{
+    background:var(--accent-deep); color:#fff;
+    padding:12px 14px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .chat-head-title{ font-weight:600; font-size:0.92rem; }
+  .chat-head-sub{ font-family:'IBM Plex Mono', monospace; font-size:0.68rem; color:#B9C4DA; }
+  .chat-close{ background:none; border:none; color:#fff; font-size:1.1rem; cursor:pointer; line-height:1;}
+  .chat-body{
+    flex:1; overflow-y:auto; padding:14px; display:flex; flex-direction:column; gap:10px;
+    background:var(--panel);
+  }
+  .msg{ max-width:86%; padding:9px 12px; font-size:0.87rem; line-height:1.42; border:1px solid var(--line); }
+  .msg.bot{ background:#fff; color:var(--ink); align-self:flex-start; border-top-left-radius:0;}
+  .msg.user{ background:var(--accent-deep); color:#fff; align-self:flex-end; border-color:var(--accent-deep); border-top-right-radius:0;}
+  .chat-quick{ display:flex; flex-wrap:wrap; gap:6px; padding:0 14px 10px; background:var(--panel); }
+  .chip{
+    font-family:'IBM Plex Sans', sans-serif; font-size:0.76rem; font-weight:500;
+    border:1px solid var(--accent); color:var(--accent);
+    background:#fff; padding:5px 10px; border-radius:12px; cursor:pointer;
+  }
+  .chip:hover{ background:var(--accent); color:#fff; }
+  .chat-input-row{ display:flex; border-top:1px solid var(--line); }
+  .chat-input-row input{
+    flex:1; border:none; padding:11px 12px; font-family:'IBM Plex Sans', sans-serif; font-size:0.87rem;
+    background:#fff; color:var(--ink); outline:none;
+  }
+  .chat-input-row button{
+    border:none; background:var(--ink); color:#fff; padding:0 16px; font-weight:600; cursor:pointer; font-size:0.85rem;
+  }
+  .chat-input-row button:hover{ background:var(--accent); }
+  @media (max-width:480px){
+    #chat-panel{ right:16px; left:16px; width:auto; bottom:88px; }
+    #chat-toggle{ right:16px; }
+  }
+
+  @media (max-width:680px){
+    .stats-strip{ grid-template-columns:repeat(2,1fr); }
+    .also-list{ grid-template-columns:1fr; }
+    .skills-grid{ grid-template-columns:1fr; }
+    .case-metrics{ gap:16px; }
+    .footer-inner{ flex-direction:column; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-row">
+    <a class="wordmark" href="#top">Kriti Arora</a>
+    <nav>
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero grid-field">
+    <div class="wrap">
+      <div class="hero-top">
+        <div class="hero-text">
+          <span class="tag-box"><span class="dot"></span>OPEN TO US · CANADA · UK · EUROPE</span>
+          <h1 class="name">Kriti Arora</h1>
+          <p class="role-line">AI-Powered Front-End Technical Architect</p>
+          <p class="lede">
+            I architect enterprise UI systems in React and wire enterprise AI —
+            conversational agents, agentic workflows, AI-assisted estimation — directly
+            into them. 12+ years leading engineering teams and consulting on
+            solution design, from component library to production retail platform.
+          </p>
+          <div class="cta-row">
+            <a class="btn" href="Kriti_Arora_Resume.docx" download>Download résumé</a>
+            <a class="btn btn-outline" href="#contact">Get in touch</a>
+          </div>
+        </div>
+        <div class="headshot-wrap">
+          <!-- Replace src below with your photo, e.g. headshot.jpg, placed next to index.html -->
+          <img src="headshot.jpg" alt="Kriti Arora" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="headshot-fallback" style="display:none;">KA</div>
+        </div>
+      </div>
+
+      <div class="stats-strip">
+        <div class="stat"><span class="num">12+</span><span class="label">years in front-end engineering</span></div>
+        <div class="stat"><span class="num">10+</span><span class="label">engineers led per programme</span></div>
+        <div class="stat"><span class="num">6,000+</span><span class="label">issues analyzed for an AI-ready playbook</span></div>
+        <div class="stat"><span class="num">3</span><span class="label">enterprise AI platforms integrated</span></div>
+      </div>
+
+      <div class="diagram">
+        <svg viewBox="0 0 780 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram: UI Systems connects to Enterprise AI, which connects to Business Impact">
+          <path class="diag-line d1" d="M120,70 L360,70"></path>
+          <path class="diag-line d2" d="M420,70 L660,70"></path>
+          <g class="diag-node n1">
+            <circle cx="80" cy="70" r="40"></circle>
+            <text x="80" y="66" text-anchor="middle">UI</text>
+            <text x="80" y="82" text-anchor="middle">Systems</text>
+          </g>
+          <g class="diag-node n2">
+            <circle cx="390" cy="70" r="40"></circle>
+            <text x="390" y="66" text-anchor="middle">Enterprise</text>
+            <text x="390" y="82" text-anchor="middle">AI</text>
+          </g>
+          <g class="diag-node n3">
+            <circle cx="700" cy="70" r="40"></circle>
+            <text x="700" y="66" text-anchor="middle">Business</text>
+            <text x="700" y="82" text-anchor="middle">Impact</text>
+          </g>
+        </svg>
+        <p class="diagram-caption">// how the work connects: front-end architecture is the delivery surface for enterprise AI, and enterprise AI is only worth building if it moves a business number.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">Selected work</h2>
+        <span class="section-note">Case studies from TCS retail &amp; enterprise engagements</span>
+      </div>
+
+      <div class="case">
+        <span class="case-tag">PLATFORM</span>
+        <h3>Re-architecting the enterprise React platform</h3>
+        <div class="case-metrics">
+          <span class="m">30%<span>smaller bundle size</span></span>
+          <span class="m">40%<span>faster First Contentful Paint</span></span>
+        </div>
+        <p>Owned architecture and technical design for the core React component libraries, design systems, and Redux-based state management shared across enterprise client engagements. Documented and maintained the library in Storybook with styled-components, cutting unnecessary re-renders by 30% and making components discoverable and reusable across squads instead of rebuilt per project.</p>
+        <p class="case-stack"><b>Stack:</b> React, TypeScript, Redux, Storybook, styled-components, Jest, React Testing Library</p>
+      </div>
+
+      <div class="case">
+        <span class="case-tag">AI OPS</span>
+        <h3>Turning 6,000+ historical issues into a playbook</h3>
+        <div class="case-metrics">
+          <span class="m">6,000+<span>historical issues reviewed</span></span>
+          <span class="m">40%<span>faster resolution turnaround</span></span>
+        </div>
+        <p>Consulted with business stakeholders and architects to manually work through more than 6,000 historical support issues, pulling out recurring patterns and effort benchmarks. The resulting library of reusable solution accelerators now informs estimation and proposal work across engagements, and cut resolution turnaround time by 40%.</p>
+        <p class="case-stack"><b>Focus:</b> Effort estimation, solution reuse, proposal strategy</p>
+      </div>
+
+      <div class="case">
+        <span class="case-tag">RETAIL</span>
+        <h3>Endless Aisle: recovering lost retail revenue</h3>
+        <div class="case-metrics">
+          <span class="m">~60%<span>of missed sales recovered</span></span>
+          <span class="m">+11%<span>additional revenue</span></span>
+        </div>
+        <p>Presented a technical solution at TCS's Endless Aisle Digital Symposium addressing a common omnichannel failure: a customer stands in-store, the item isn't on the shelf, and the sale is lost. The solution recovered roughly 60% of those missed conversions for retail clients and generated 11% additional revenue.</p>
+        <p class="case-stack"><b>Domain:</b> Omnichannel retail, in-store/online inventory bridging</p>
+      </div>
+
+      <div class="case">
+        <span class="case-tag">PAYMENTS</span>
+        <h3>Zero-defect omnichannel payments</h3>
+        <div class="case-metrics">
+          <span class="m">0<span>outstanding payment defects</span></span>
+          <span class="m">Award<span>TCS Contextual Master, Retail Payments</span></span>
+        </div>
+        <p>Diagnosed a recurring class of omnichannel payment failures tied to a third-party gateway (Juspay) integration and generic offer-application logic — the kind of bug that's easy to patch once and see return in a different form. Root-caused it structurally and drove open issues to zero, which earned TCS's Contextual Master Award for retail payments.</p>
+        <p class="case-stack"><b>Integration:</b> Juspay (third-party payment gateway), offer engine</p>
+      </div>
+
+      <div class="case">
+        <span class="case-tag">AGENTIC AI</span>
+        <h3>Wiring enterprise AI into everyday workflows</h3>
+        <div class="case-metrics">
+          <span class="m">3<span>platforms integrated</span></span>
+          <span class="m">10+<span>engineers led through delivery</span></span>
+        </div>
+        <p>Architected integrations across Stibo Systems (PIM/MDM), Kore.ai (conversational AI), and Salesforce Agentforce to move enterprise clients from static workflows to agentic ones — where the system proposes the next action instead of waiting to be told. Led the cross-functional engineering team through discovery, proposal, and delivery.</p>
+        <p class="case-stack"><b>Platforms:</b> Stibo Systems, Kore.ai, Salesforce Agentforce</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="also-shipped">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">Also shipped</h2>
+      </div>
+      <div class="also-list">
+        <div class="also-item">
+          <h4>Vendor portal</h4>
+          <p>Supplier onboarding, catalog management, and communication workflows for retail clients.</p>
+        </div>
+        <div class="also-item">
+          <h4>Cloudinary media pipeline</h4>
+          <p>Scalable image upload, transformation, and delivery across retail web applications.</p>
+        </div>
+        <div class="also-item">
+          <h4>Observability dashboards</h4>
+          <p>Custom NerdPack dashboards on New Relic for real-time performance monitoring and issue triage.</p>
+        </div>
+        <div class="also-item">
+          <h4>AI-assisted development</h4>
+          <p>Adopted GitHub Copilot (Opus model) in retail engagements to speed up delivery without giving up code quality.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">Experience</h2>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <span><span class="job-title">Lead Front-End UI Engineer</span> · <span class="job-org">Tata Consultancy Services</span></span>
+          <span class="job-dates">JAN 2019 — PRESENT · KOLKATA, INDIA</span>
+        </div>
+        <ul>
+          <li>Direct cross-functional teams of 10+ engineers across proposal, architecture, and agile delivery.</li>
+          <li>Own front-end architecture: component libraries, design systems, Redux state management, testing.</li>
+          <li>Architect enterprise AI integrations (Stibo, Kore.ai, Salesforce Agentforce) into agentic workflows.</li>
+          <li>Certified Scrum Master (PSM I); mentor engineers and manage resourcing across releases.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <span><span class="job-title">Technology Analyst</span> · <span class="job-org">Infosys</span></span>
+          <span class="job-dates">JUL 2014 — JAN 2019 · MYSORE &amp; BHUBANESHWAR, INDIA</span>
+        </div>
+        <ul>
+          <li>Delivered full-stack applications using MongoDB, Express.js, Node.js, and Bootstrap.</li>
+          <li>Built a digital wallet prototype featured on Infosys's internal instructional platforms.</li>
+          <li>Trained engineers on React, Angular, and Java through Infosys–Udacity nanodegree collaborations; recognized for the highest training completions, with trainees selected onto Mercedes-Benz and Apple projects.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">Skills</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h4>Front-end architecture</h4>
+          <p>React, TypeScript, Redux.js, JavaScript (ES6), Node.js, Express.js, Angular, MERN/MEAN stack, design systems, Storybook, styled-components, Jest, React Testing Library</p>
+        </div>
+        <div class="skill-group">
+          <h4>Enterprise platforms &amp; AI</h4>
+          <p>Kore.ai, Salesforce Agentforce, Stibo Systems (PIM/MDM), Snowflake, New Relic (NerdPack), GitHub Copilot, Cloudinary, Generative AI, AI-assisted coding &amp; prompt engineering</p>
+        </div>
+        <div class="skill-group">
+          <h4>Techno-managerial &amp; consulting</h4>
+          <p>Certified Scrum Master (PSM I), Agile/Scrum, project resourcing, team building, client consulting, proposal strategy &amp; estimation, mentorship, retail domain expertise</p>
+        </div>
+        <div class="skill-group">
+          <h4>Tools &amp; analytics</h4>
+          <p>Git, Azure DevOps, MongoDB, Microservices, Spring Boot, Adobe Analytics, Google Analytics</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="recognition">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">Recognition &amp; certifications</h2>
+      </div>
+      <ul class="recog-list">
+        <li><b>Contextual Master Award</b><span>TCS — retail payments, omnichannel defect resolution</span></li>
+        <li><b>Beyond Performance / Excellence / Service &amp; Commitment Awards</b><span>TCS — recurring recognition across tenure</span></li>
+        <li><b>Professional Scrum Master I (PSM I)</b><span>Scrum.org</span></li>
+        <li><b>Hands-on Approach to Artificial Intelligence</b><span>IIT Kharagpur, via TCS iON</span></li>
+        <li><b>Microsoft Certified: Azure Fundamentals</b><span>Microsoft</span></li>
+        <li><b>Microsoft Certified: Programming in HTML5 with CSS3 and JavaScript</b><span>Microsoft</span></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact" class="grid-field">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">Let's talk</h2>
+      <span class="section-note">Open to relocation &amp; visa sponsorship · 1-month notice</span>
+    </div>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:kritiar10@gmail.com">kritiar10@gmail.com</a>
+        <a href="tel:+919163470103">+91 91634 70103</a>
+        <a href="https://www.linkedin.com/in/kritiarorasoftwareengineer" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <div class="footer-col">
+        <h4>Based in</h4>
+        <p>Kolkata, India</p>
+        <p>Open to US, Canada, UK, Europe</p>
+      </div>
+      <div class="footer-col">
+        <h4>Résumé</h4>
+        <a href="Kriti_Arora_Resume.docx" download>Download .docx</a>
+      </div>
+    </div>
+    <p class="copyright">© 2026 Kriti Arora.</p>
+  </div>
+</footer>
+
+<!-- Chat widget: client-side FAQ + referral capture. No external API — see note in comments below. -->
+<button id="chat-toggle" onclick="document.getElementById('chat-panel').classList.add('open'); this.style.display='none';">
+  <span class="pulse"></span> Ask about Kriti
+</button>
+
+<div id="chat-panel">
+  <div class="chat-head">
+    <div>
+      <div class="chat-head-title">Ask about Kriti</div>
+      <div class="chat-head-sub">// instant answers, or leave a referral note</div>
+    </div>
+    <button class="chat-close" onclick="document.getElementById('chat-panel').classList.remove('open'); document.getElementById('chat-toggle').style.display='flex';">✕</button>
+  </div>
+  <div class="chat-body" id="chat-body">
+    <div class="msg bot">Hi, I'm a quick-answer bot for Kriti's background — ask me about her experience, skills, availability, or leave your details for a referral.</div>
+  </div>
+  <div class="chat-quick" id="chat-quick">
+    <span class="chip" onclick="askQuick('What does Kriti do?')">What does she do?</span>
+    <span class="chip" onclick="askQuick('Is she available for work?')">Availability</span>
+    <span class="chip" onclick="askQuick('Tell me about a project')">A project</span>
+    <span class="chip" onclick="startReferral()">Refer / contact her</span>
+  </div>
+  <div class="chat-input-row">
+    <input id="chat-input" type="text" placeholder="Type a question…" onkeydown="if(event.key==='Enter'){sendChat();}">
+    <button onclick="sendChat()">Send</button>
+  </div>
+</div>
+
+<script>
+/*
+  This is a lightweight, fully client-side FAQ bot — pattern-matching over
+  canned answers, not a live LLM. A real AI-backed chatbot needs a server
+  to hold the API key safely (an API key embedded in this static HTML would
+  be public to anyone who views source). To upgrade this later: stand up a
+  small serverless function (Vercel/Netlify function or Cloudflare Worker)
+  that holds the key and proxies requests, and call that endpoint from here
+  instead of getBotReply().
+*/
+
+const FAQ = [
+  { keys: ['what does', 'what do you do', 'role', 'about her', 'who is'],
+    a: "Kriti is an AI-Powered Front-End Technical Architect with 12+ years of experience — she architects enterprise React platforms and wires enterprise AI (conversational agents, agentic workflows) directly into them. Currently Lead Front-End UI Engineer at TCS." },
+  { keys: ['skill', 'stack', 'tech', 'technolog'],
+    a: "Core stack: React, TypeScript, Redux, Node.js, Angular. Plus enterprise AI: Kore.ai, Salesforce Agentforce, Stibo Systems, Generative AI. Also: Storybook, styled-components, Microservices, Spring Boot, and full agile/scrum leadership." },
+  { keys: ['available', 'notice', 'visa', 'sponsor', 'relocat', 'hire', 'hiring'],
+    a: "Yes — open to relocation across the US, Canada, UK, and Europe, open to visa sponsorship, and available with a 1-month notice period." },
+  { keys: ['project', 'case study', 'work', 'built', 'example'],
+    a: "A few highlights: recovered ~60% of missed retail sales (+11% revenue) with an Endless Aisle solution; drove omnichannel payment defects to zero (TCS Contextual Master Award); and re-architected a React platform for 30% smaller bundles / 40% faster load. See the 'Selected work' section above for details." },
+  { keys: ['award', 'recogni', 'certif'],
+    a: "TCS Contextual Master Award (retail payments), multiple Beyond Performance / Excellence awards, Professional Scrum Master I (PSM I), and Microsoft certifications in Azure and HTML5/CSS3/JavaScript." },
+  { keys: ['contact', 'email', 'reach', 'linkedin', 'phone'],
+    a: "Best reached at kritiar10@gmail.com or via LinkedIn (linked in the footer). Or use 'Refer / contact her' below to send a note directly." },
+  { keys: ['experience', 'years', 'background'],
+    a: "12+ years total: Lead Front-End UI Engineer at TCS (2019–present), Technology Analyst at Infosys (2014–2019)." },
+];
+
+function getBotReply(text){
+  const t = text.toLowerCase();
+  for (const item of FAQ){
+    if (item.keys.some(k => t.includes(k))) return item.a;
+  }
+  return "I don't have a canned answer for that — try asking about her skills, projects, availability, or use 'Refer / contact her' to reach Kriti directly.";
+}
+
+function appendMsg(text, who){
+  const body = document.getElementById('chat-body');
+  const div = document.createElement('div');
+  div.className = 'msg ' + who;
+  div.textContent = text;
+  body.appendChild(div);
+  body.scrollTop = body.scrollHeight;
+}
+
+function sendChat(){
+  const input = document.getElementById('chat-input');
+  const val = input.value.trim();
+  if (!val) return;
+  appendMsg(val, 'user');
+  input.value = '';
+  setTimeout(() => appendMsg(getBotReply(val), 'bot'), 300);
+}
+
+function askQuick(q){
+  appendMsg(q, 'user');
+  setTimeout(() => appendMsg(getBotReply(q), 'bot'), 300);
+}
+
+let referralStep = 0;
+let referralData = {};
+
+function startReferral(){
+  referralStep = 1;
+  referralData = {};
+  appendMsg("Sure — I'll pass this along to Kriti. What's your name and company?", 'bot');
+  document.getElementById('chat-input').placeholder = "Your name, company…";
+}
+
+function handleReferralStep(val){
+  if (referralStep === 1){
+    referralData.who = val;
+    referralStep = 2;
+    appendMsg("Got it. What's the opportunity or question you'd like to send her?", 'bot');
+  } else if (referralStep === 2){
+    referralData.msg = val;
+    referralStep = 3;
+    appendMsg("Last thing — your email so she can reply?", 'bot');
+  } else if (referralStep === 3){
+    referralData.email = val;
+    referralStep = 0;
+    document.getElementById('chat-input').placeholder = "Type a question…";
+    const subject = encodeURIComponent("Portfolio referral / inquiry — " + referralData.who);
+    const body = encodeURIComponent(
+      "From: " + referralData.who + " (" + referralData.email + ")\n\n" + referralData.msg
+    );
+    const mailto = "mailto:kritiar10@gmail.com?subject=" + subject + "&body=" + body;
+    appendMsg("Thanks! Opening your email client to send this to Kriti — if it doesn't open, email kritiar10@gmail.com directly.", 'bot');
+    window.location.href = mailto;
+  }
+}
+
+// override sendChat to route through referral flow when active
+const _sendChat = sendChat;
+sendChat = function(){
+  const input = document.getElementById('chat-input');
+  const val = input.value.trim();
+  if (!val) return;
+  appendMsg(val, 'user');
+  input.value = '';
+  if (referralStep > 0){
+    setTimeout(() => handleReferralStep(val), 250);
+  } else {
+    setTimeout(() => appendMsg(getBotReply(val), 'bot'), 300);
+  }
+};
+</script>
+
+</body>
+</html>
