@@ -32,6 +32,9 @@
     line-height:1.55;
     -webkit-font-smoothing:antialiased;
   }
+  /* Discourage casual text copying; public content remains readable and accessible. */
+  body{ -webkit-user-select:none; user-select:none; }
+  input, textarea, [contenteditable="true"]{ -webkit-user-select:text; user-select:text; }
   a{color:var(--accent);}
   .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
 
@@ -414,7 +417,7 @@
             solution design, from component library to production retail platform.
           </p>
           <div class="cta-row">
-            <a class="btn" href="Kriti_Arora_Resume.docx" download>Download résumé</a>
+            <a class="btn" href="Kriti_Arora_Resume.pdf" download>Download résumé (PDF)</a>
             <a class="btn btn-outline" href="#contact">Get in touch</a>
           </div>
         </div>
@@ -612,6 +615,7 @@
         <h2 class="section-title">Recognition &amp; certifications</h2>
       </div>
       <ul class="recog-list">
+        <li><b><a href="https://academy.claude.com/verify/1aaf7306b47ab38bdd5dcfdc4e633366" target="_blank" rel="noopener noreferrer">Claude Academy certificate</a></b><span>Claude Academy · Acquired <time datetime="2026-11-01">1 November 2026</time> · <a href="https://academy.claude.com/verify/1aaf7306b47ab38bdd5dcfdc4e633366" target="_blank" rel="noopener noreferrer">Verify certificate</a></span></li>
         <li><b>Contextual Master Award</b><span>TCS — retail payments, omnichannel defect resolution</span></li>
         <li><b>Beyond Performance / Excellence / Service &amp; Commitment Awards</b><span>TCS — recurring recognition across tenure</span></li>
         <li><b>Professional Scrum Master I (PSM I)</b><span>Scrum.org</span></li>
@@ -644,7 +648,7 @@
       </div>
       <div class="footer-col">
         <h4>Résumé</h4>
-        <a href="Kriti_Arora_Resume.docx" download>Download .docx</a>
+        <a href="Kriti_Arora_Resume.pdf" download>Download PDF</a>
       </div>
     </div>
     <p class="copyright">© 2026 Kriti Arora.</p>
@@ -680,6 +684,10 @@
 </div>
 
 <script>
+// Limit routine copying without interfering with typing or copying user-entered text.
+document.addEventListener('copy', function(event){
+  if (!event.target.closest('input, textarea, [contenteditable="true"]')) event.preventDefault();
+});
 /*
   This is a lightweight, fully client-side FAQ bot — pattern-matching over
   canned answers, not a live LLM. A real AI-backed chatbot needs a server
@@ -700,7 +708,7 @@ const FAQ = [
   { keys: ['project', 'case study', 'work', 'built', 'example'],
     a: "A few highlights: recovered ~60% of missed retail sales (+11% revenue) with an Endless Aisle solution; drove omnichannel payment defects to zero (TCS Contextual Master Award); and re-architected a React platform for 30% smaller bundles / 40% faster load. See the 'Selected work' section above for details." },
   { keys: ['award', 'recogni', 'certif'],
-    a: "TCS Contextual Master Award (retail payments), multiple Beyond Performance / Excellence awards, Professional Scrum Master I (PSM I), and Microsoft certifications in Azure and HTML5/CSS3/JavaScript." },
+    a: "TCS Contextual Master Award (retail payments), multiple Beyond Performance / Excellence awards, Professional Scrum Master I (PSM I), Claude Academy certificate (1 November 2026; verification linked in Recognition & certifications), and Microsoft certifications in Azure and HTML5/CSS3/JavaScript." },
   { keys: ['contact', 'email', 'reach', 'linkedin', 'phone'],
     a: "Best reached at kritiar10@gmail.com or via LinkedIn (linked in the footer). Or use 'Refer / contact her' below to send a note directly." },
   { keys: ['experience', 'years', 'background'],
